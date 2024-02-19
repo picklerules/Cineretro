@@ -1,0 +1,9 @@
+.button-primary {
+    background-color: var(--couleur-primaire);
+    color: var(--couleur-secondaire);
+  }
+  
+  .button-secondary {
+    background-color: var(--couleur-contrastante);
+    color: var(--couleur-accent);
+  }

@@ -1,0 +1,14 @@
+:root {
+    /* Couleurs principales */
+    --couleur-primaire: #704214; 
+    --couleur-secondaire: #F4E4C1; 
+  
+    --couleur-contraste: #56392D; 
+    --couleur-accent: #DAA520; 
+  
+    /* Utilité et arrière-plan */
+    --couleur-arriere-plan: #F4E4C1; 
+    --couleur-texte: #704214; 
+    --couleur-texte-accent: #DAA520; 
+  }
+  

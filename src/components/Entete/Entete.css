@@ -1,0 +1,33 @@
+header {
+  background-color: var(--couleur-primaire); 
+  padding: 20px 40px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+header h1 {
+  color: var(--couleur-texte-accent); 
+  margin: 0;
+  font-size: 4rem; 
+}
+
+ a {
+  text-decoration: none;
+
+}
+
+nav a {
+  color: var(--couleur-accent); 
+  font-size: 1.5rem;
+  text-decoration: none; 
+  padding: 10px 20px;
+  transition: background-color 0.3s, color 0.3s;
+  text-transform: uppercase;
+}
+
+nav a:hover, nav a:focus {
+  background-color: var(--couleur-accent); 
+  color: var(--couleur-arriere-plan); 
+  border-radius: 5px; 
+}
