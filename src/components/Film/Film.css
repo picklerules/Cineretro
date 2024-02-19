@@ -1,0 +1,27 @@
+.grid__item {
+    flex: 1 1 200px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin: 10px;
+    background-color: var(--couleur-arriere-plan); 
+    color: var(--couleur-texte); 
+    box-shadow: 0 2px 5px rgba(0,0,0,0.2);
+    transition: transform 0.3s ease-in-out;
+  }
+  
+  .grid__item:hover {
+    transform: scale(1.05);
+  }
+  
+  .grid__item img {
+    width: 100%;
+    height: auto;
+    border-bottom: 2px solid var(--couleur-accent); 
+  }
+  
+  .grid__item p {
+    font-weight: bold;
+    margin: 10px 0;
+  }
+  

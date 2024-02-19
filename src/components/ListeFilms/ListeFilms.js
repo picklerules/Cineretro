@@ -4,9 +4,9 @@ import './ListeFilms.css';
 function ListeFilms() {
 
   const listeFilms = [
-    { titre: 'Film 1', realisateur:'Bilo', annee:'1992' },
-    { titre: 'Film 2', realisateur:'Alex', annee:'2020' },
-    { titre: 'Film 3', realisateur:'Memo', annee:'1999' }
+    { id: 1, titre: 'Film 1', realisateur:'Bilo', annee:'1992' },
+    { id: 2, titre: 'Film 2', realisateur:'Alex', annee:'2020' },
+    { id: 3, titre: 'Film 3', realisateur:'Memo', annee:'1999' }
   ];
 
   const tuilesFilm = listeFilms.map((film, index)=> {
