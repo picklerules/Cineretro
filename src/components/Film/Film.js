@@ -1,14 +1,16 @@
-import { useParams } from 'react-router-dom';
+
+import TuileFilm from '../TuileFilm/TuileFilm';
 import './Film.css';
 
 function Film() {
-  let { id } = useParams();
+
 
 
   return (
     <div className="grid__item">
 
       <h2>Détails du Film</h2>
+      {TuileFilm}
 
     </div>
   );

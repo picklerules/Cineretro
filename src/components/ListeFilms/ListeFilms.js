@@ -1,20 +1,33 @@
+import { useEffect, useState } from'react';
 import TuileFilm from '../TuileFilm/TuileFilm';
+import { Link } from 'react-router-dom';
 import './ListeFilms.css';
 
-function ListeFilms() {
+function ListeFilms(props) {
 
-  const listeFilms = [
-    { id: 1, titre: 'Film 1', realisateur:'Bilo', annee:'1992' },
-    { id: 2, titre: 'Film 2', realisateur:'Alex', annee:'2020' },
-    { id: 3, titre: 'Film 3', realisateur:'Memo', annee:'1999' }
-  ];
+  const urlListeFilms = 'https://four1f-node-api.onrender.com/films';
+  //const urlListeFilms = 'https://api-films-qfje.onrender.com/api/films';
+  const [listeFilms, setListeFilms] = useState([]);
+  //déclaration de la variable listeFilms et methose qui va permettre de mettre a jour la variable listeFilms, j'initialie la variable a un tableau vide car je n'ai pas encore la données, je vais la chercher avec un fetch
+
+  useEffect(() => { 
+
+    fetch(urlListeFilms)
+      .then((reponse) => reponse.json())
+      .then((data) => { 
+        // console.log(data);
+        setListeFilms(data); //assigne la data (reponse) a la variable listeFilms avec la methode qui me permet de mettre à jour la variable listeFilms
+      });
+
+  }, []); //tableau vide veut dire execute le rendement du useEffect uniquement lors du premier rendu (chargement de la page)
 
   const tuilesFilm = listeFilms.map((film, index)=> {
-    return <TuileFilm key={index} data={film}/>
+    return <Link to={`/film/${props.id}`}> <TuileFilm key={index} data={film}/></Link>
   });
   
   return (
   <main >
+
     <h2>Liste des films</h2>
     <div className="grid">
       {tuilesFilm}
