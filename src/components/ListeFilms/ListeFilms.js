@@ -5,8 +5,8 @@ import './ListeFilms.css';
 
 function ListeFilms(props) {
 
-  const urlListeFilms = 'https://four1f-node-api.onrender.com/films';
-  //const urlListeFilms = 'https://api-films-qfje.onrender.com/api/films';
+  // const urlListeFilms = 'https://four1f-node-api.onrender.com/films';
+  const urlListeFilms = 'https://api-films-qfje.onrender.com/api/films';
   const [listeFilms, setListeFilms] = useState([]);
   //déclaration de la variable listeFilms et methose qui va permettre de mettre a jour la variable listeFilms, j'initialie la variable a un tableau vide car je n'ai pas encore la données, je vais la chercher avec un fetch
 
@@ -21,8 +21,8 @@ function ListeFilms(props) {
 
   }, []); //tableau vide veut dire execute le rendement du useEffect uniquement lors du premier rendu (chargement de la page)
 
-  const tuilesFilm = listeFilms.map((film, index)=> {
-    return <Link to={`/film/${props.id}`}> <TuileFilm key={index} data={film}/></Link>
+  const tuilesFilm = listeFilms.map((film)=> {
+    return <Link key={film.id} to={`/film/${film.id}`}> <TuileFilm data={film}/></Link>
   });
   
   return (
