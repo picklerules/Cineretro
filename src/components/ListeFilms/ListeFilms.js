@@ -31,27 +31,29 @@ function ListeFilms(props) {
       </Link>
     );
   });
-  //bonne stratégie serait d'envoyer le filtre à l'enfant
 
-  function filtre(e) {
-    console.log(e.target);
+
+  function filtre(champTri, ordreTri) {
+    
+    const urlFiltre = `${urlListeFilms}?tri=${champTri}&ordre=${ordreTri}`;
     //setUrlFiltre("data/realisation-asc.json");
-    setUrlFiltre(`${urlListeFilms}?tri=realisation&ordre=asc`);
+    setUrlFiltre(urlFiltre);
     //setUrlFiltre(`${urlListeFilms}?tri=${e.target.value}&ordre=asc`);
-    //quel est l'élément qui a été cliqué et faire une structure conditionnelle selon le url a appelé
+
     
   }
 
-  function maDeuxiemeFonction() {
-    console.log('maDeuxiemeFonction');
-  }
 
   return (
     <main>
       {/* placer le ul dans le composant enfant filtre, passé en props la fonction filtre qui pourra etre appelé dans l'enfant et remonté dans le parent, voir démo du compteur */}
       <ul>
-        <li onClick={(e) => {filtre(e); maDeuxiemeFonction()}}>Réalisateur (A-Z)</li>
-        
+        <li onClick={() => filtre('titre', 'asc')}>Titre (A-Z)</li>
+        <li onClick={() => filtre('titre', 'desc')}>Titre (Z-A)</li>
+        <li onClick={() => filtre('realisation', 'asc')}>Réalisateur (A-Z)</li>
+        <li onClick={() => filtre('realisation', 'desc')}>Réalisateur (Z-A)</li>
+        <li onClick={() => filtre('annee', 'desc')}>Par année (du plus récent)</li>
+        <li onClick={() => filtre('annee', 'asc')}>Par année (du plus ancien)</li>
       </ul>
       <div className="grid">{tuilesFilm}</div>
     </main>
