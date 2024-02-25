@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
 import TuileFilm from "../TuileFilm/TuileFilm";
 import { Link } from "react-router-dom";
+import Filtre from "../Filtre/Filtre";
 import "./ListeFilms.css";
 
 function ListeFilms(props) {
@@ -46,15 +47,7 @@ function ListeFilms(props) {
 
   return (
     <main>
-      {/* placer le ul dans le composant enfant filtre, passé en props la fonction filtre qui pourra etre appelé dans l'enfant et remonté dans le parent, voir démo du compteur */}
-      <ul>
-        <li onClick={() => filtre('titre', 'asc')}>Titre (A-Z)</li>
-        <li onClick={() => filtre('titre', 'desc')}>Titre (Z-A)</li>
-        <li onClick={() => filtre('realisation', 'asc')}>Réalisateur (A-Z)</li>
-        <li onClick={() => filtre('realisation', 'desc')}>Réalisateur (Z-A)</li>
-        <li onClick={() => filtre('annee', 'desc')}>Par année (du plus récent)</li>
-        <li onClick={() => filtre('annee', 'asc')}>Par année (du plus ancien)</li>
-      </ul>
+      <Filtre props={filtre} />
       <div className="grid">{tuilesFilm}</div>
     </main>
   );
