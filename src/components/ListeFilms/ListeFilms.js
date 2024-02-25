@@ -14,6 +14,8 @@ function ListeFilms(props) {
   const [listeFilms, setListeFilms] = useState([]);
   //déclaration de la variable listeFilms et methose qui va permettre de mettre a jour la variable listeFilms, j'initialie la variable a un tableau vide car je n'ai pas encore la données, je vais la chercher avec un fetch
   const [urlFiltre, setUrlFiltre] = useState(urlListeFilms);
+  const [filtreActif, setFiltreActif] = useState({ champ: 'titre', ordre: 'asc' });
+
 
   useEffect(() => {
     fetch(urlFiltre)
@@ -28,7 +30,7 @@ function ListeFilms(props) {
     return (
       <Link key={film.id} to={`/film/${film.id}`}>
         {" "}
-        <TuileFilm data={film} />
+        <TuileFilm key={film.id} data={film} filtreActif={filtreActif} />
       </Link>
     );
   });
@@ -40,14 +42,15 @@ function ListeFilms(props) {
     //setUrlFiltre("data/realisation-asc.json");
     setUrlFiltre(urlFiltre);
     //setUrlFiltre(`${urlListeFilms}?tri=${e.target.value}&ordre=asc`);
-
+    setFiltreActif({ champ: champTri, ordre: ordreTri });
     
   }
 
 
   return (
     <main>
-      <Filtre props={filtre} />
+      <Filtre onFiltreChange ={filtre} />
+      <p>Filtre actif : {filtreActif.champ} ({filtreActif.ordre === 'asc' ? 'A-Z' : 'Z-A'})</p>
       <div className="grid">{tuilesFilm}</div>
     </main>
   );

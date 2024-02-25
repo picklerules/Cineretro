@@ -1,15 +1,15 @@
 import './Filtre.css';
 
 // Filtre.js
-function Filtre({props}) {
+function Filtre({ onFiltreChange }) {
   return (
     <ul>
-      <li onClick={() => props('titre', 'asc')}>Titre (A-Z)</li>
-      <li onClick={() => props('titre', 'desc')}>Titre (Z-A)</li>
-      <li onClick={() => props('realisation', 'asc')}>Réalisateur (A-Z)</li>
-      <li onClick={() => props('realisation', 'desc')}>Réalisateur (Z-A)</li>
-      <li onClick={() => props('annee', 'desc')}>Par année (du plus récent)</li>
-      <li onClick={() => props('annee', 'asc')}>Par année (du plus ancien)</li>
+      <li onClick={() => onFiltreChange('titre', 'asc')}>Titre (A-Z)</li>
+      <li onClick={() => onFiltreChange('titre', 'desc')}>Titre (Z-A)</li>
+      <li onClick={() => onFiltreChange('realisation', 'asc')}>Réalisateur (A-Z)</li>
+      <li onClick={() => onFiltreChange('realisation', 'desc')}>Réalisateur (Z-A)</li>
+      <li onClick={() => onFiltreChange('annee', 'desc')}>Par année (du plus récent)</li>
+      <li onClick={() => onFiltreChange('annee', 'asc')}>Par année (du plus ancien)</li>
     </ul>
   );
 }
