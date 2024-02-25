@@ -1,3 +1,9 @@
+@font-face {
+  font-family: Retro60Prime ;
+  src: url('/public/font/Retro60Prime.ttf');
+}
+
 h1, h2 {
     color: var(--couleur-texte-accent);
+
   }

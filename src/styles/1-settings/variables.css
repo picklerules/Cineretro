@@ -1,3 +1,4 @@
 :root {
-    --space-base: max(5px, 1w)
+    --space-base: max(5px, 1w);
+    --font-tittle: 'Retro60Prime', 'sans-serif';
 }

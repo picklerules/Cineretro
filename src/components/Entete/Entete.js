@@ -5,7 +5,7 @@ function Entete() {
   
   return (
   <header>
-    <NavLink to="/"><h1>CinéRétro</h1></NavLink>
+    <NavLink to="/"><h1>CineRetro</h1></NavLink>
     <nav>
       <NavLink to="/liste-films">Liste des films</NavLink>
     </nav>

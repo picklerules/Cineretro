@@ -36,7 +36,7 @@ function Film() {
         />
         <p>Realisateur: {filmDetails.realisation}</p>
         <p>Année: {filmDetails.annee}</p>
-        <p>Genres: {filmDetails.genres}</p>
+        <p>Genres: {Array.isArray(filmDetails.genres) ? filmDetails.genres.join(' | ') : filmDetails.genres}</p>
         <p>Description: {filmDetails.description}</p>
       </div>
     </div>
