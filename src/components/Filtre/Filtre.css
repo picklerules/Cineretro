@@ -1,0 +1,28 @@
+/* Filtre.css */
+ul {
+    list-style-type: none; 
+    padding: 0;
+    margin: 20px 0; 
+    display: flex; 
+    justify-content: center;
+    flex-wrap: wrap; 
+  }
+  
+  li {
+    cursor: pointer; 
+    margin: 5px 10px; 
+    padding: 5px 10px; 
+    background-color: var(--couleur-accent); 
+    color: var(--couleur-texte-blanc); 
+    border-radius: 5px; 
+    transition: background-color 0.3s ease; 
+  }
+  
+  li:hover {
+    background-color: var(--couleur-primaire);
+  }
+
+  .active {
+    background-color:var(--couleur-contraste); 
+  }
+  

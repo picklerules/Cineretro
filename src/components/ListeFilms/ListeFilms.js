@@ -49,8 +49,8 @@ function ListeFilms(props) {
 
   return (
     <main>
-      <Filtre onFiltreChange ={filtre} />
-      <p>Filtre actif : {filtreActif.champ} ({filtreActif.ordre === 'asc' ? 'A-Z' : 'Z-A'})</p>
+      <Filtre onFiltreChange ={filtre} filtreActif={filtreActif}/>
+      {/* <p>Filtre actif : {filtreActif.champ} ({filtreActif.ordre === 'asc' ? 'A-Z' : 'Z-A'})</p> */}
       <div className="grid">{tuilesFilm}</div>
     </main>
   );

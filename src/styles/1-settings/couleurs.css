@@ -9,6 +9,7 @@
     /* Utilité et arrière-plan */
     --couleur-arriere-plan: #F4E4C1; 
     --couleur-texte: #704214; 
+    --couleur-texte-blanc:white; 
     --couleur-texte-accent: #DAA520; 
   }
   
