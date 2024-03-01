@@ -27,8 +27,8 @@ function App() {
 
     if (e.target.usager.value === "admin") {
       // setEstLog(prevEstLog => !prevEstLog);
-      e.target.reset();
       setLogging(logging => ({ ...logging, estLog: true, usager: e.target.usager.value }));
+      e.target.reset();
     }
   }
 

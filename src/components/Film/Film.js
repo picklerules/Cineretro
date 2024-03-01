@@ -77,12 +77,48 @@ function Film() {
     //   })
   }
 
+  //TODO: aller corriger commentaire dans le backend
+  async function soumettreCommentaire(e) { //ici je récupere en parametre la valeur de la note saisie par l'usagée 
+    //console.log('soumettreNote');
+    e.preventDefault();
+    console.log(e.target);
+    let aCommentaires;
+
+    if (!filmDetails.commentaires) {
+      aCommentaires = [{ commentaire: 'Je suis un commentaire', usager: context }]; //je dois dynamiser le commentaire
+    } else {
+      aCommentaires = filmDetails.commentaires;
+      aCommentaires.push({ commentaire: 'Je suis un commentaire', usager: context });
+    }  
+
+    const oOptions = {
+      method : 'PUT', 
+      headers: {
+        'Content-Type': 'application/json'
+      },
+      body: JSON.stringify({ commentaires: aCommentaires })
+    }
+
+    let putCommentaire = await fetch(urlFilmDetail, oOptions),
+      getFilmDetails = await fetch(urlFilmDetail);
+
+    Promise.all([putCommentaire, getFilmDetails])
+      .then((reponse) => reponse[1].json())
+      .then((data) => {
+        console.log(data);
+        setFilmDetails(data);
+
+      })
+
+
+  }
+
   let blocAjoutCommentaire;
     if (context.estLog) {
       blocAjoutCommentaire = 
     
-          <form>
-            <textarea>Ajouter un commentaire</textarea>
+          <form onSubmit={soumettreCommentaire}>
+            <textarea placeholder="Ajouter un commentaire"></textarea>
             <button>Soumettre</button>
           </form>
       
