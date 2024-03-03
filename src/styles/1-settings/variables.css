@@ -1,4 +1,5 @@
 :root {
     --space-base: max(5px, 1w);
-    --font-tittle: 'Retro60Prime', 'sans-serif';
+    --font-tittle: 'RetroLight', 'sans-serif';
+    --font-texte: 'RetroBanker', 'sans-serif';
 }

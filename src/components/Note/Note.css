@@ -1,0 +1,39 @@
+  
+  
+  .wrapper {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+  }
+  
+  input[type="radio"] {
+    display: none;
+  }
+  
+  .text {
+    color: #f4f6ff;
+    font-size: 22px;
+    margin-top: 15px;
+  }
+  
+  .yellow {
+    color: #DAA520
+  }
+  
+  .black {
+    color: #56392D 
+  }
+
+  .fa-star {
+    cursor: pointer;
+    transition: color 300ms;
+    font-size: 30px;
+  }
+  
+  @media screen and (min-width: 560px) {
+    .fa-star {
+      font-size: 30px;
+    }
+  }
+

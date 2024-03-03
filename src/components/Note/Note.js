@@ -1,34 +1,51 @@
-import './Note.css';
+import "./Note.css";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faStar } from "@fortawesome/free-solid-svg-icons";
 import React, { useState } from "react";
 
-function Note({ filmDetails, onNoteSubmit, moyenneNotes, nbVotes }) {
-  const [noteSelectionnee, setNoteSelectionnee] = useState(1);
-
-  const handleChange = (e) => {
-    setNoteSelectionnee(parseInt(e.target.value, 10));
-  };
+function Note({ onNoteSubmit, moyenneNotes, nbVotes }) {
+  const [rating, setRating] = useState(0);
+  const [hover, setHover] = useState(null);
 
   const handleSubmit = () => {
-    onNoteSubmit(noteSelectionnee);
+    onNoteSubmit(rating);
   };
 
   return (
     <div>
-      <div>
-        <select value={noteSelectionnee} onChange={handleChange}>
-          <option value="1">1</option>
-          <option value="2">2</option>
-          <option value="3">3</option>
-          <option value="4">4</option>
-          <option value="5">5</option>
-        </select>
-        <button onClick={handleSubmit}>Vote</button>
+      <div className="wrapper">
+        {[...Array(5)].map((star, i) => {
+          const ratingValue = i + 1;
+          return (
+            <label key={i}>
+              <input
+                type="radio"
+                name="rating"
+                value={ratingValue}
+                onClick={() => setRating(ratingValue)}
+                style={{ display: "none" }} // Cache les inputs radio si tu veux utiliser uniquement des icônes pour la notation
+              />
+              <FontAwesomeIcon
+                icon={faStar}
+                className={
+                  ratingValue <= (hover || rating) ? "yellow" : "black"
+                }
+                onMouseEnter={() => setHover(ratingValue)}
+                onMouseLeave={() => setHover(null)}
+                style={{ cursor: "pointer" }}
+              />
+            </label>
+          );
+        })}
       </div>
+      <button onClick={handleSubmit}>Soumettre</button>
       <div>
         {nbVotes > 0 ? (
           <>
             <p>Moyenne des votes : {moyenneNotes}</p>
-            <p>Nombre de vote(s) : {nbVotes} {nbVotes > 1 ? "votes" : "vote"}</p>
+            <p>
+              Nombre de vote(s) : {nbVotes} {nbVotes > 1 ? "votes" : "vote"}
+            </p>
           </>
         ) : (
           <p>Aucun vote enregistré</p>
@@ -39,3 +56,5 @@ function Note({ filmDetails, onNoteSubmit, moyenneNotes, nbVotes }) {
 }
 
 export default Note;
+
+// référece codepen pour le star ratings: https://codepen.io/marcelloantunes/pen/wvMNYVv

@@ -3,7 +3,23 @@
   src: url('/public/font/Retro60Prime.ttf');
 }
 
+@font-face {
+  font-family: RetroLight ;
+  src: url('/public/font/Retrolight.ttf');
+}
+
+@font-face {
+  font-family: RetroBanker ;
+  src: url('/public/font/RetroBanker.ttf');
+}
+
+
+
 h1, h2 {
     color: var(--couleur-texte-accent);
 
   }
+
+p {
+  font-family: var(--font-texte);
+}
