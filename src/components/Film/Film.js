@@ -3,7 +3,7 @@ import { AppContext } from "../App/App";
 import React, { useEffect, useState, useContext } from "react";
 import { useParams } from "react-router-dom";
 import TuileFilm from "../TuileFilm/TuileFilm";
-// import Note from "../Note/Note";
+import Note from "../Note/Note";
 import "./Film.css";
 
 function Film() {
@@ -43,35 +43,26 @@ function Film() {
     return <div>Chargement des détails du film...</div>;
   }
 
-  async function soumettreNote(e) { //ici je récupere en parametre la valeur de la note saisie par l'usagée 
-    //console.log('soumettreNote');
-
-    let aNotes = filmDetails.notes ? [...filmDetails.notes, noteSoumise] : [noteSoumise];
-
-    // if (!filmDetails.notes) {
-    //   aNotes = [1]; //je dois dynamiser la note
-    // } else {
-    //   aNotes = filmDetails.notes;
-    //   aNotes.push(1);
-    // }  //aNotes.length 
-
+  async function soumettreNote(noteSelectionnee) {
+    let aNotes = filmDetails.notes ? [...filmDetails.notes, noteSelectionnee] : [noteSelectionnee];
+  
     const oOptions = {
       method : 'PUT',
       headers: {
         'Content-Type': 'application/json'
       },
       body: JSON.stringify({ notes: aNotes })
-    }
-
-    let putNote = await fetch(urlFilmDetail, oOptions),
-      getFilmDetails = await fetch(urlFilmDetail);
-
+    };
+  
+    let putNote = await fetch(urlFilmDetail, oOptions);
+    let getFilmDetails = await fetch(urlFilmDetail);
+  
     Promise.all([putNote, getFilmDetails])
-      .then((reponses) => {
-      const data = reponses[1].json();
-      setFilmDetails(data);
-
-        // Calcul et mise à jour de la moyenne et du nombre de votes
+      .then(async (reponses) => {
+        const data = await reponses[1].json();
+        setFilmDetails(data);
+  
+        // Recalcule et mise à jour de la moyenne et du nombre de votes immédiatement
         if (data.notes && data.notes.length > 0) {
           const sommeNotes = data.notes.reduce((acc, curr) => acc + curr, 0);
           const moyenne = sommeNotes / data.notes.length;
@@ -84,6 +75,7 @@ function Film() {
       })
       .catch((error) => console.error("Erreur lors de la mise à jour du vote:", error));
   }
+  
 
 
 
@@ -147,25 +139,7 @@ function Film() {
         <p>Année: {filmDetails.annee}</p>
         <p>Genres: {Array.isArray(filmDetails.genres) ? filmDetails.genres.join(' | ') : filmDetails.genres}</p>
         <p>Description: {filmDetails.description}</p>
-
-        <select onChange={(e) => setNoteSoumise(parseInt(e.target.value, 10))}>
-          <option value="1">1</option>
-          <option value="2">2</option>
-          <option value="3">3</option>
-          <option value="4">4</option>
-          <option value="5">5</option>
-        </select>
-        <button onClick={() => soumettreNote(noteSoumise)}>Vote</button>
-
-        
-        <div>
-          Moyenne des votes : {nbVotes > 0 ? moyenneNotes : "Aucun vote enregistré"}
-        </div>
-        <div>
-          Nombre de vote(s) : {nbVotes} {nbVotes <= 1 ? "vote" : "votes"}
-        </div>
-
-
+        <Note onNoteSubmit={soumettreNote} moyenneNotes={moyenneNotes} nbVotes={nbVotes} />
         {blocAjoutCommentaire}
       </div>
     </div>
