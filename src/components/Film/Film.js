@@ -2,8 +2,8 @@
 import { AppContext } from "../App/App"; 
 import React, { useEffect, useState, useContext } from "react";
 import { useParams } from "react-router-dom";
-import TuileFilm from "../TuileFilm/TuileFilm";
 import Note from "../Note/Note";
+import Commentaire from "../Commentaire/Commentaire";
 import "./Film.css";
 
 function Film() {
@@ -13,11 +13,9 @@ function Film() {
   let { id } = useParams();
   const [filmDetails, setFilmDetails] = useState(null);
   const urlFilmDetail = `https://api-films-qfje.onrender.com/api/films/${id}`;
-  const [noteSoumise, setNoteSoumise] = useState(null);
   const [moyenneNotes, setMoyenneNotes] = useState(0);
   const [nbVotes, setNbVotes] = useState(0);
-
-
+  
 
   useEffect(() => {
     fetch(urlFilmDetail)
@@ -75,57 +73,37 @@ function Film() {
       })
       .catch((error) => console.error("Erreur lors de la mise à jour du vote:", error));
   }
+
+  async function soumettreCommentaire(commentaireTexte, usager) {
+
+    const commentaire = {
+      texte: commentaireTexte,
+      usager: context
+    };
   
-
-
-
-  //TODO: aller corriger commentaire dans le backend
-  async function soumettreCommentaire(e) { //ici je récupere en parametre la valeur de la note saisie par l'usagée 
-    //console.log('soumettreNote');
-    e.preventDefault();
-    console.log(e.target);
-    let aCommentaires;
-
-    if (!filmDetails.commentaires) {
-      aCommentaires = [{ commentaire: 'Je suis un commentaire', usager: context }]; //je dois dynamiser le commentaire
-    } else {
-      aCommentaires = filmDetails.commentaires;
-      aCommentaires.push({ commentaire: 'Je suis un commentaire', usager: context });
-    }  
-    
-  //appelAsync({})  passer la valeur a aller porter a la BD
-    const oOptions = {
-      method : 'PUT', 
+    let nouveauxCommentaires = filmDetails.commentaires ? [...filmDetails.commentaires, commentaire] : [commentaire];
+  
+    const options = {
+      method: 'PUT',
       headers: {
-        'Content-Type': 'application/json'
+        'Content-Type': 'application/json',
       },
-      body: JSON.stringify({ commentaires: aCommentaires })
-    }
+      body: JSON.stringify({ commentaires: nouveauxCommentaires }),
+    };
 
-    let putCommentaire = await fetch(urlFilmDetail, oOptions),
-      getFilmDetails = await fetch(urlFilmDetail);
+    let putCommentaire = await fetch(urlFilmDetail, options);
+    let getFilmDetails = await fetch(urlFilmDetail);
 
     Promise.all([putCommentaire, getFilmDetails])
-      .then((reponse) => reponse[1].json())
-      .then((data) => {
-        console.log(data);
-        setFilmDetails(data);
 
+   .then(async (reponses) => {
+        const data = await reponses[1].json();
+        setFilmDetails(data);
       })
 
-
+  
   }
-
-  let blocAjoutCommentaire;
-    if (context.estLog) {
-      blocAjoutCommentaire = 
-    
-          <form onSubmit={soumettreCommentaire}>
-            <textarea placeholder="Ajouter un commentaire"></textarea>
-            <button>Soumettre</button>
-          </form>
-      
-    }
+  
 
   return (
     <div className="detail__container">
@@ -140,7 +118,12 @@ function Film() {
         <p>Genres: {Array.isArray(filmDetails.genres) ? filmDetails.genres.join(' | ') : filmDetails.genres}</p>
         <p>Description: {filmDetails.description}</p>
         <Note onNoteSubmit={soumettreNote} moyenneNotes={moyenneNotes} nbVotes={nbVotes} />
-        {blocAjoutCommentaire}
+        {context.estLog && (
+          <Commentaire 
+            filmId={id} 
+            onCommentaireSubmit={soumettreCommentaire} 
+          />
+        )}
       </div>
     </div>
   );

@@ -20,6 +20,6 @@ h1, h2 {
 
   }
 
-p {
+p, a, button, input{
   font-family: var(--font-texte);
 }
