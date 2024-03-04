@@ -25,3 +25,19 @@
 .detail__item p {
   margin: 10px 0;
 }
+
+.commentaires {
+  margin-top: 20px;
+}
+
+.commentaire {
+  margin-bottom: 15px;
+  padding: 10px;
+  background-color: var(--couleur-accent);
+  border-radius: 5px;
+}
+
+.usager {
+  font-style: italic;
+  font-size: 0.9em;
+}

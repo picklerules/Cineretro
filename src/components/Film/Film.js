@@ -15,6 +15,7 @@ function Film() {
   const urlFilmDetail = `https://api-films-qfje.onrender.com/api/films/${id}`;
   const [moyenneNotes, setMoyenneNotes] = useState(0);
   const [nbVotes, setNbVotes] = useState(0);
+
   
 
   useEffect(() => {
@@ -117,13 +118,32 @@ function Film() {
         <p>Année: {filmDetails.annee}</p>
         <p>Genres: {Array.isArray(filmDetails.genres) ? filmDetails.genres.join(' | ') : filmDetails.genres}</p>
         <p>Description: {filmDetails.description}</p>
+
+        {/* Affichage du formulaire de note */}
         <Note onNoteSubmit={soumettreNote} moyenneNotes={moyenneNotes} nbVotes={nbVotes} />
+
+        {/* Affichage du formulaire de commentaire */}
         {context.estLog && (
           <Commentaire 
             filmId={id} 
             onCommentaireSubmit={soumettreCommentaire} 
           />
         )}
+
+        {/* Affichage des commentaires existants */}
+        <div className="commentaires">
+          {filmDetails.commentaires && filmDetails.commentaires.length > 0 ? (
+            filmDetails.commentaires.map((commentaire, index) => (
+              <div key={index} className="commentaire">
+                <p className="commentaire">{commentaire.texte}</p>
+                <p className="usager">- {commentaire.usager.usager}</p>
+              </div>
+            ))
+          ) : (
+            <p>Aucun commentaire pour ce film.</p>
+          )}
+        </div>
+          
       </div>
     </div>
   );
