@@ -1,0 +1,17 @@
+.form__commentaire {
+    max-width: 600px;
+    margin: 20px auto;
+    padding: 20px;
+    border-radius: 8px;
+}
+
+textarea {
+    width: 100%;
+    margin-bottom: 20px;
+    padding: 10px;
+    border: 1px solid var(--couleur-accent);
+    border-radius: 4px;
+    height: 100px;
+    resize: none; 
+    font-family: inherit; 
+}

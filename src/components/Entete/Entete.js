@@ -18,7 +18,8 @@ function Entete(props) {
         <nav>
           {/* { props.estLog ? <NavLink to="/admin">Admin</NavLink> : '' } */}
           {/* { props.logging.estLog ? <NavLink to="/admin">Admin</NavLink> : '' } */}
-          { context.estLog ? <NavLink to="/admin">Admin</NavLink> : '' }
+          { context.estLog ? <NavLink to="/admin">Admin</NavLink> : ''}
+         
 
           <NavLink to="/liste-films">Liste des films</NavLink>
         </nav>
@@ -27,6 +28,7 @@ function Entete(props) {
           <input type="text" name="usager" placeholder="Nom d'usager"></input>
           <button>Login</button>
       </form>
+      { context.estLog ? <p>Bonjour {context.usager}</p> : ''}
     </div>
   );
 }

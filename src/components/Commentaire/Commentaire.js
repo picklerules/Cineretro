@@ -8,13 +8,13 @@ function Commentaire({ onCommentaireSubmit }) {
   
     const handleSubmit = (e) => {
       e.preventDefault(); 
-      
+
       onCommentaireSubmit(commentaireTexte); 
       setCommentaireTexte(''); 
     };
   
     return (
-      <form onSubmit={handleSubmit}>
+      <form onSubmit={handleSubmit} className='form__commentaire'>
         <textarea
           value={commentaireTexte}
           onChange={(e) => setCommentaireTexte(e.target.value)}
