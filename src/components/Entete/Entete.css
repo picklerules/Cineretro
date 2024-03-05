@@ -32,3 +32,37 @@ nav a:hover, nav a:focus {
   color: var(--couleur-arriere-plan); 
   border-radius: 5px; 
 }
+
+input[type="text"] {
+  font-size: 1rem; 
+  padding: 5px 10px;
+  margin-right: 10px;
+  border: 2px solid var(--couleur-accent);
+  background-color: transparent; 
+  color: var(--couleur-texte-accent);
+}
+
+input[type="text"]:focus {
+  outline: 2px solid var(--couleur-secondaire); 
+}
+
+
+button {
+  font-size: 1rem; 
+  padding: 5px 15px;
+  background-color: var(--couleur-accent); 
+  color: var(--couleur-arriere-plan);
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color 0.3s, transform 0.3s;
+}
+
+button:hover {
+  background-color: var(--couleur-texte-accent);
+  transform: scale(1.05);
+}
+
+button:active {
+  transform: scale(0.95);
+}
