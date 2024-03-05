@@ -32,13 +32,19 @@ function App() {
     }
   }
 
+  function logout() {
+    console.log('logout');
+    setLogging({ estLog: false, usager: "" });
+  }
+  
+
   return (
 
     <AppContext.Provider value={logging}>
 
       <Router>
         {/* <Entete handleLogin={login} estLog={estLog}/> */}
-        <Entete handleLogin={login} logging={logging} />
+        <Entete handleLogin={login} handleLogout={logout} />
         <Routes>
           <Route path="/" element={<Accueil />} />
           <Route path="/liste-films" element={<ListeFilms />} />
