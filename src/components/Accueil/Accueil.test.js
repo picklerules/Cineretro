@@ -1,4 +1,16 @@
-// les 3 paragraphes toBeInTheDocument
+import React from 'react';
+import { render, screen } from '@testing-library/react';
+import '@testing-library/jest-dom';
+import accueilDonnees from "./Accueil.json";
+import Accueil from './Accueil';
 
-//importer le accueil.json, boucler dessus, forEach pour chaque élément, paragraphe courrant est dans document, ressemble beaucoup au test a faire dans ListeFilmTest 
-//a peu pres 4 lignes
+describe('Composant Accueil', () => {
+    test('verifie si chaque paragraphe du contenu de Accueil.json est présent dans le document', () => {
+      render(<Accueil />);
+  
+      accueilDonnees.forEach((paragraphe) => {
+        expect(screen.getByText(paragraphe)).toBeInTheDocument();
+      });
+    });
+  });
+
