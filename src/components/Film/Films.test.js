@@ -96,9 +96,21 @@ describe('Composant Film', () => {
      */
     test('Vérifie la moyenne et le nombre de vote(s)', async () => {
 
+        const sommeNotes = data.notes.reduce((acc, curr) => acc + curr, 0);
+        const moyenne = sommeNotes / data.notes.length;
 
+        render(
+            <ContextWrapper>
+                <Film />
+            </ContextWrapper>
+        );
+        
+        await waitFor(() => {
 
-
+            expect(screen.getByText(moyenne)).toBeInTheDocument();
+            expect(screen.getByText(sommeNotes)).toBeInTheDocument();
+        });
+    
 
     });
 

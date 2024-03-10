@@ -1,6 +1,6 @@
-main {
+.main__accueil {
   display: flex;
-  flex-direction: column;
+  flex-direction: row;
   align-items: center; 
   justify-content: center; 
   padding: 20px;
@@ -12,4 +12,11 @@ p {
   font-size: 1.1rem;
   line-height: 1.6;
   padding: 0 10px;
+}
+
+.img__accueil {
+  max-width: 500px;
+  max-height: 500px;
+  object-fit: contain;
+  margin-bottom: 20px;
 }

@@ -43,6 +43,7 @@ function App() {
     <AppContext.Provider value={logging}>
 
       <Router>
+      {/* <Router basename="/Cineretro">  */}
         {/* <Entete handleLogin={login} estLog={estLog}/> */}
         <Entete handleLogin={login} handleLogout={logout} />
         <Routes>

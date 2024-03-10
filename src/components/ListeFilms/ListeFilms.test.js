@@ -42,12 +42,18 @@ describe('Composant ListeFilms', () => {   //ici c'est la description du groupe 
      */
     test('Vérifie si les clés sont présentes dans la réponse', async () => {
 
-        //sur mockFilms faire la poutine pour trouver la moyenne et le nombre de votes 
-        //copier coller la fonction moyenne pour eviter de l'importer
-        //render le composant vote avec sa/ses props 
-        //sur screen toBeInTheDocument() pour moyenne puis nombre de votes
+        render(<ListeFilms />);
 
-
+        mockFilm.forEach(film => {
+            expect(screen.getByText(film.titre)).toBeInTheDocument();
+            expect(screen.getByText(film.realisation)).toBeInTheDocument();
+            expect(screen.getByText(film.description)).toBeInTheDocument();
+            expect(screen.getByText(film.annee)).toBeInTheDocument();
+            expect(screen.getByText(new RegExp(film.genres.join('|'), 'i'))).toBeInTheDocument();
+            const elImg = document.querySelector('img');
+            expect(elImg).toHaveAttribute('src', `/img/${mockFilm.titreVignette}`);
+          });
+        
 
 
     });

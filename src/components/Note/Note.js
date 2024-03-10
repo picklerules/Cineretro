@@ -13,6 +13,16 @@ function Note({ onNoteSubmit, moyenneNotes, nbVotes }) {
 
   return (
     <div>
+            <div>
+        {nbVotes > 0 ? (
+          <>
+            <p><strong>Note : </strong> {moyenneNotes}/5 ({nbVotes} {nbVotes > 1 ? "votes" : "vote"})</p>
+
+          </>
+        ) : (
+          <p>Aucun vote enregistré</p>
+        )}
+      </div>
       <div className="wrapper">
         {[...Array(5)].map((star, i) => {
           const ratingValue = i + 1;
@@ -23,7 +33,7 @@ function Note({ onNoteSubmit, moyenneNotes, nbVotes }) {
                 name="rating"
                 value={ratingValue}
                 onClick={() => setRating(ratingValue)}
-                style={{ display: "none" }} // Cache les inputs radio si tu veux utiliser uniquement des icônes pour la notation
+                style={{ display: "none" }} 
               />
               <FontAwesomeIcon
                 icon={faStar}
@@ -37,20 +47,10 @@ function Note({ onNoteSubmit, moyenneNotes, nbVotes }) {
             </label>
           );
         })}
+          <button onClick={handleSubmit} className="btn__note">Soumettre</button>
       </div>
-      <button onClick={handleSubmit}>Soumettre</button>
-      <div>
-        {nbVotes > 0 ? (
-          <>
-            <p>Moyenne des votes : {moyenneNotes}</p>
-            <p>
-              Nombre de vote(s) : {nbVotes} {nbVotes > 1 ? "votes" : "vote"}
-            </p>
-          </>
-        ) : (
-          <p>Aucun vote enregistré</p>
-        )}
-      </div>
+    
+
     </div>
   );
 }

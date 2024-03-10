@@ -7,8 +7,8 @@ function TuileFilm({ data, filtreActif }) {
       <img src={`/img/${data.titreVignette}`} alt={data.titre} />
 
       <h3>{data.titre}</h3>
-      {/* {filtreActif.champ === 'realisation' && <p>Réalisateur: {data.realisation}</p>}
-      {filtreActif.champ === 'annee' && <p>Année: {data.annee}</p>} */}
+      {filtreActif.champ === 'realisation' && <p>Réalisateur: {data.realisation}</p>}
+      {filtreActif.champ === 'annee' && <p>Année: {data.annee}</p>}
 
     </article>
   );

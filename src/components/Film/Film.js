@@ -114,10 +114,10 @@ function Film() {
           src={`/img/${filmDetails.titreVignette}`}
           alt={filmDetails.titre} loading="lazy"
         />
-        <p>Realisateur: {filmDetails.realisation}</p>
-        <p>Année: {filmDetails.annee}</p>
-        <p>Genres: {Array.isArray(filmDetails.genres) ? filmDetails.genres.join(' | ') : filmDetails.genres}</p>
-        <p>Description: {filmDetails.description}</p>
+        <p><strong>Realisateur : </strong>{filmDetails.realisation}</p>
+        <p><strong>Année : </strong>{filmDetails.annee}</p>
+        <p><strong>Genres : </strong>{Array.isArray(filmDetails.genres) ? filmDetails.genres.join(' | ') : filmDetails.genres}</p>
+        <p>{filmDetails.description}</p>
 
         {/* Affichage du formulaire de note */}
         <Note onNoteSubmit={soumettreNote} moyenneNotes={moyenneNotes} nbVotes={nbVotes} />
@@ -131,7 +131,7 @@ function Film() {
         )}
 
         {/* Affichage des commentaires existants */}
-        <div className="commentaires">
+        <div className="commentaire">
           {filmDetails.commentaires && filmDetails.commentaires.length > 0 ? (
             filmDetails.commentaires.map((commentaire, index) => (
               <div key={index} className="commentaire">

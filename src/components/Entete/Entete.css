@@ -6,6 +6,12 @@ header {
   align-items: center;
 }
 
+nav {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
 header h1 {
   color: var(--couleur-texte-accent); 
   margin: 0;

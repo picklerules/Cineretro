@@ -4,11 +4,13 @@ import accueilDonnees from './Accueil.json'
 function Accueil() {
   
   return (
-    <main>
-      {/*Le contenu du fichier accueil.json importé, placer accueil.json dans le composants accueil*/}
+    <main className="main__accueil">
+      <img className="img__accueil" src="/img/cineretro.webp"/>
+      <div className="accueil__container">
       {accueilDonnees.map((p, index) => (
         <p key={index}>{p}</p>
       ))}
+      </div>
     </main>
 )
 
