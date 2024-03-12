@@ -1,8 +1,6 @@
 import './Commentaire.css';
 import React, { useState } from 'react';
 
-
-// Dans le composant Commentaire
 function Commentaire({ onCommentaireSubmit }) {
     const [commentaireTexte, setCommentaireTexte] = useState('');
   

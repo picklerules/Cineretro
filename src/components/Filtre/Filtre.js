@@ -1,6 +1,5 @@
 import './Filtre.css';
 
-// Filtre.js
 function Filtre({ onFiltreChange, filtreActif }) {
   return (
     <ul>

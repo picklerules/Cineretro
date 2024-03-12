@@ -18,15 +18,14 @@ export const AppContext = React.createContext();
 
 function App() {
 
-  //const [estLog, setEstLog] = useState(false);
+
   const [logging, setLogging] = useState({ estLog: false, usager: "" });
 
   function login(e) {
     e.preventDefault();
-    //console.log('login');
 
     if (e.target.usager.value === "admin") {
-      // setEstLog(prevEstLog => !prevEstLog);
+
       setLogging(logging => ({ ...logging, estLog: true, usager: e.target.usager.value }));
       e.target.reset();
     }
@@ -44,7 +43,7 @@ function App() {
 
       <Router>
       {/* <Router basename="/Cineretro">  */}
-        {/* <Entete handleLogin={login} estLog={estLog}/> */}
+
         <Entete handleLogin={login} handleLogout={logout} />
         <Routes>
           <Route path="/" element={<Accueil />} />
@@ -52,7 +51,6 @@ function App() {
           <Route path="/film/:id" element={<Film />}  />
           <Route path="*" element={<Page404 />} />
 
-          {/* <Route path="/admin" element={estLog ? <Admin /> : <Navigate to="/" />} /> */}
           <Route
             path="/admin"
             element={logging.estLog ? <Admin /> : <Navigate to="/" />}

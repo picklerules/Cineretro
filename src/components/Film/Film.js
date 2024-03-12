@@ -61,7 +61,7 @@ function Film() {
         const data = await reponses[1].json();
         setFilmDetails(data);
   
-        // Recalcule et mise à jour de la moyenne et du nombre de votes immédiatement
+        //mettre à jour le nombre de notes et la moyenne des notes
         if (data.notes && data.notes.length > 0) {
           const sommeNotes = data.notes.reduce((acc, curr) => acc + curr, 0);
           const moyenne = sommeNotes / data.notes.length;
@@ -131,7 +131,7 @@ function Film() {
         )}
 
         {/* Affichage des commentaires existants */}
-        <div className="commentaire">
+        <div className="commentaires">
           {filmDetails.commentaires && filmDetails.commentaires.length > 0 ? (
             filmDetails.commentaires.map((commentaire, index) => (
               <div key={index} className="commentaire">

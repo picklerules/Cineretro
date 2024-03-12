@@ -28,7 +28,7 @@ function Entete(props) {
         </nav>
 
       </header>
-      { context.estLog ? <p>Bonjour {context.usager}</p> : ''}
+      { context.estLog ? <p><i>Yeehaw, {context.usager} ! </i></p> : ''}
     </div>
     
   );

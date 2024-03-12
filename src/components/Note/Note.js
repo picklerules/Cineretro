@@ -1,7 +1,7 @@
-import "./Note.css";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faStar } from "@fortawesome/free-solid-svg-icons";
 import React, { useState } from "react";
+import "./Note.css";
 
 function Note({ onNoteSubmit, moyenneNotes, nbVotes }) {
   const [rating, setRating] = useState(0);
