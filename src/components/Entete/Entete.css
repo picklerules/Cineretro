@@ -40,7 +40,7 @@ nav a:hover, nav a:focus {
   border-radius: 5px; 
 }
 
-input[type="text"] {
+input {
   font-size: 1rem; 
   padding: 5px 10px;
   margin-right: 10px;
