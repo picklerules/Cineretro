@@ -4,6 +4,7 @@ import React, { useEffect, useState, useContext } from "react";
 import { useParams } from "react-router-dom";
 import Note from "../Note/Note";
 import Commentaire from "../Commentaire/Commentaire";
+import { useNavigate } from "react-router-dom";
 import "./Film.css";
 
 function Film() {
@@ -15,6 +16,7 @@ function Film() {
   const urlFilmDetail = `https://api-films-qfje.onrender.com/api/films/${id}`;
   const [moyenneNotes, setMoyenneNotes] = useState(0);
   const [nbVotes, setNbVotes] = useState(0);
+  let navigate = useNavigate();
 
   
 
@@ -104,6 +106,31 @@ function Film() {
 
   
   }
+
+  const supprimerFilm = async () => {
+    if (!window.confirm("Êtes-vous sûr de vouloir supprimer ce film ?")) return;
+    const token = localStorage.getItem("api-film"); // Ou obtenir le token d'une autre manière
+
+    try {
+        const reponse = await fetch(`https://api-films-qfje.onrender.com/api/films/${id}`, {
+            method: 'DELETE',
+            headers: {
+                'Authorization': `Bearer ${token}`,
+                'Content-Type': 'application/json',
+            },
+        });
+
+        if (reponse.ok) {
+            alert("Film supprimé avec succès.");
+            navigate("/liste-films"); // Redirige vers la liste des films
+        } else {
+            throw new Error('La suppression a échoué');
+        }
+    } catch (erreur) {
+        console.error(erreur);
+        alert("Erreur lors de la suppression du film.");
+    }
+};
   
 
   return (
@@ -122,8 +149,12 @@ function Film() {
         {/* Affichage du formulaire de note */}
         <Note onNoteSubmit={soumettreNote} moyenneNotes={moyenneNotes} nbVotes={nbVotes} />
 
+        {context && (
+                <button onClick={supprimerFilm}>Supprimer le film</button>
+            )}
+
         {/* Affichage du formulaire de commentaire */}
-        {context.estLog && (
+        {context && (
           <Commentaire 
             filmId={id} 
             onCommentaireSubmit={soumettreCommentaire} 

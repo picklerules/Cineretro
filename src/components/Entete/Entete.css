@@ -51,6 +51,7 @@ input {
 
 input[type="text"]:focus {
   outline: 2px solid var(--couleur-secondaire); 
+  background-color: transparent;
 }
 
 
