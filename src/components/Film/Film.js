@@ -10,13 +10,14 @@ import "./Film.css";
 function Film() {
   
   const context = useContext(AppContext);
+  const navigate = useNavigate();
 
   let { id } = useParams();
   const [filmDetails, setFilmDetails] = useState(null);
   const urlFilmDetail = `https://api-films-qfje.onrender.com/api/films/${id}`;
   const [moyenneNotes, setMoyenneNotes] = useState(0);
   const [nbVotes, setNbVotes] = useState(0);
-  let navigate = useNavigate();
+
 
   
 
