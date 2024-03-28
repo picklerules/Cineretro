@@ -38,23 +38,33 @@ function FormFilm() {
     //on recupere la valeur du champ
     const value = e.target.value;
 
+    //condition uniquement pour les checkbox
     if (name.startsWith("genre")) {
-
+      //on récupère l'état du checkbox
       const isChecked = e.target.checked;
       let genres = formData.genres || [];
-      //si on decoche, on enleve
+      //si on decoche, et que la valeur est dans le tableau de notre objet film
       if (!isChecked && genres.includes(value)) {
+        //créer un nouveau tableau sans la donnée décochéee
         genres = genres.filter((genre, index) => {
+          //si true, genre est ajouté au tableau, si false, genre n'est pas ajouté au tableau
           return genre !== value;
         });
 
+        //si on coche la boite et que la valeur n'est pas dans le tableau de notre objet film
       } else if (isChecked && !genres.includes(value)) {
+        //on ajoute la valeur au tableau
         genres.push(value);
       }
 
-      //on met à jour la valeur du champ
-      const donneeModifiee = {...formData, genres };
+      //on met à jour notre objet
+      const donneeModifiee = { ...formData, genres };
+      setFormData(donneeModifiee);
+
+    } else if (name === "titreVignette"){
+      const nomFichier = e.target.files[0].name;
     
+      const donneeModifiee = { ...formData, "titreVignette": nomFichier };
       setFormData(donneeModifiee);
 
     } else {
@@ -90,7 +100,8 @@ function FormFilm() {
     const request = await fetch("http://localhost:3301/api/films", data);
     const response = await request.json();
     //gérer la réponse du form
-    if (request.status === 200) {
+    if (request.status === 201) {
+      TODO:
       //afficher un message de succcès
 
       //vider les données du formulaire
@@ -105,6 +116,7 @@ function FormFilm() {
       //réinitialiser le state de validité
       setFormValidity("invalid");
       navigate("/liste-films");
+
     } else {
       const messageError = response.message;
       console.log("erreur", messageError);
@@ -160,17 +172,15 @@ function FormFilm() {
             maxLength={50}
           ></input>
 
+          <label htmlFor="titreVignette">Titre Vignette</label>
           <input
             className="input__formfilm"
-            type="text"
+            type="file"
             name="titreVignette"
-            placeholder="Titre de la vignette"
-            value={formData.titreVignette}
+            id="titreVignette"
             onChange={onFormDataChange}
-          ></input>
-
-          {/* <input className="input__formfilm" type="text" name="genres" placeholder="Genre du film"
-            value={formData.genres} onChange={onFormDataChange}></input> */}
+            accept=".jpg, .jpeg, .png"
+          />
 
           <div className="input__formfilm">
             <p>Genres</p>

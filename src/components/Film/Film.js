@@ -109,8 +109,9 @@ function Film() {
   }
 
   const supprimerFilm = async () => {
+
     if (!window.confirm("Êtes-vous sûr de vouloir supprimer ce film ?")) return;
-    const token = localStorage.getItem("api-film"); // Ou obtenir le token d'une autre manière
+    const token = localStorage.getItem("api-film"); 
 
     try {
         const reponse = await fetch(`https://api-films-qfje.onrender.com/api/films/${id}`, {
@@ -123,9 +124,9 @@ function Film() {
 
         if (reponse.ok) {
             alert("Film supprimé avec succès.");
-            navigate("/liste-films"); // Redirige vers la liste des films
+            navigate("/liste-films"); 
         } else {
-            throw new Error('La suppression a échoué');
+            throw new Error('Echec de suppression du film');
         }
     } catch (erreur) {
         console.error(erreur);
@@ -168,7 +169,7 @@ function Film() {
             filmDetails.commentaires.map((commentaire, index) => (
               <div key={index} className="commentaire">
                 <p className="commentaire">{commentaire.texte}</p>
-                <p className="usager">- {commentaire.usager.usager}</p>
+                <p className="usager">- {commentaire.usager}</p>
               </div>
             ))
           ) : (
