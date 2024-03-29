@@ -108,9 +108,9 @@ function Film() {
   
   }
 
-  const supprimerFilm = async () => {
+  async function supprimerFilm() {
 
-    if (!window.confirm("Êtes-vous sûr de vouloir supprimer ce film ?")) return;
+    if (!window.confirm("Voulez-vous vraiment supprimer ce film?")) return;
     const token = localStorage.getItem("api-film"); 
 
     try {
@@ -133,7 +133,7 @@ function Film() {
         alert("Erreur lors de la suppression du film.");
     }
 };
-  
+
 
   return (
     <div className="detail__container">
