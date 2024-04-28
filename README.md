@@ -1,70 +1,47 @@
-# Getting Started with Create React App
+## Français
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+# Projet CineRetro
 
-## Available Scripts
+## Description du Projet
+Le projet "CineRetro" est une application de catalogue de films permettant aux utilisateurs de se connecter et de laisser une note ou un commentaire sur les films. Les utilisateurs peuvent également filtrer les films selon différents critères. Les administrateurs ont la capacité d'ajouter, de modifier et de supprimer des films dans le catalogue.
 
-In the project directory, you can run:
+## Technologie Utilisée
+- **Backend Framework:** Node.js avec Express
+- **Frontend Framework:** React
+- **Base de Données:** Firebase
 
-### `npm start`
+## Fonctionnalités
+- **Interaction Utilisateur:** Connexion des utilisateurs, notation et commentaires sur les films.
+- **Filtrage des Films:** Les utilisateurs peuvent rechercher et filtrer les films selon divers critères.
+- **Gestion des Films:** Les administrateurs peuvent gérer le catalogue en ajoutant, modifiant ou supprimant des films.
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+## Configuration du Projet
+Pour configurer le projet sur votre système local, suivez les étapes ci-dessous:
+1. Clonez le dépôt Git.
+2. Exécutez `npm install` pour installer les dépendances.
+3. Configurez votre connexion Firebase dans le fichier `.env`.
+4. Lancez le serveur avec `npm start`.
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+## English
 
-### `npm test`
+# CineRetro Project
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+## Project Description
+The "CineRetro" project is a film catalog application that allows users to log in and leave ratings or comments on movies. Users can also filter movies based on various criteria. Administrators are able to add, modify, and delete movies in the catalog.
 
-### `npm run build`
+## Technology Used
+- **Backend Framework:** Node.js with Express
+- **Frontend Framework:** React
+- **Database:** Firebase
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+## Features
+- **User Interaction:** User logins, movie ratings, and comments.
+- **Movie Filtering:** Users can search and filter movies based on various criteria.
+- **Movie Management:** Administrators can manage the catalog by adding, modifying, or deleting movies.
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
-
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
-
-### `npm run eject`
-
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
-
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
-
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
-
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+## Project Setup
+To set up the project on your local system, follow the steps below:
+1. Clone the Git repository.
+2. Run `npm install` to install dependencies.
+3. Configure your Firebase connection in the `.env` file.
+4. Start the server with `npm start`.
